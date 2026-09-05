@@ -5,9 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Japan Express - Японоос бараа захиалга, контейнер тээвэр</title>
     <style>
-        body { margin: 0; padding: 0; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; min-height: 100vh; }
+        body { margin: 0; padding: 0; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; min-height: 100vh; position: relative; }
         
-        /* 背景設定: 左日本、右モンゴル */
+        /* 背景: 左日本（赤ピンク系統）、右モンゴル（青緑系統） */
         .background-container {
             position: fixed;
             top: 0; left: 0; width: 100%; height: 100%;
@@ -16,79 +16,80 @@
         }
         .bg-japan {
             flex: 1;
-            background-image: url('https://images.unsplash.com/photo-1540959733332-e94e270b2602?q=80&w=1600&auto=format&fit=crop'); /* 富士山と桜 */
-            background-size: cover; background-position: center;
+            background: linear-gradient(135deg, #ffdde1 0%, #ee9ca7 100%);
+            display: flex; align-items: center; justify-content: center;
+            font-size: 80px; opacity: 0.15;
         }
         .bg-mongolia {
             flex: 1;
-            background-image: url('https://images.unsplash.com/photo-1533104868038-744ccac13c7d?q=80&w=1600&auto=format&fit=crop'); /* モンゴル草原とゲル */
-            background-size: cover; background-position: center;
+            background: linear-gradient(135deg, #a8e063 0%, #56ab2f 100%);
+            display: flex; align-items: center; justify-content: center;
+            font-size: 80px; opacity: 0.15;
         }
 
-        /* 中央の物流イラストエリア */
+        /* 中央の物流ビジュアル */
         .logistics-center {
             position: fixed;
-            top: 50%; left: 50%; transform: translate(-50%, -50%);
-            width: 80%; max-width: 600px; height: 300px;
-            background-image: url('https://cdn.pixabay.com/photo/2021/01/18/14/05/cargo-ship-5928189_1280.png'); /* 物流・コンテナ・飛行機のイラスト */
-            background-size: contain; background-repeat: no-repeat; background-position: center;
-            opacity: 0.3; z-index: -1;
+            top: 40%; left: 50%; transform: translate(-50%, -50%);
+            font-size: 70px;
+            text-shadow: 0 5px 15px rgba(0,0,0,0.2);
+            z-index: -1; text-align: center; white-space: nowrap;
         }
 
-        /* メインコンテンツ */
-        header { background-color: rgba(0, 51, 102, 0.9); color: white; text-align: center; padding: 30px 10px; }
-        .hero { background-color: rgba(230, 242, 255, 0.95); border-left: 5px solid #003366; margin: 20px; padding: 20px; border-radius: 8px; }
-        .container { max-width: 700px; margin: auto; background: rgba(255, 255, 255, 0.95); padding: 30px; border-radius: 10px; margin-bottom: 100px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); }
-        h1 { margin: 0; font-size: 2.5em; }
-        h2 { border-bottom: 2px solid #d9534f; padding-bottom: 10px; color: #003366; }
-        .form-group { margin-bottom: 18px; }
-        label { display: block; margin-bottom: 7px; font-weight: bold; }
-        input[type="text"], input[type="email"], textarea { width: 100%; padding: 12px; box-sizing: border-box; border: 1px solid #ccc; border-radius: 6px; font-size: 16px; }
-        button { background-color: #d9534f; color: white; padding: 15px 25px; border: none; cursor: pointer; width: 100%; font-size: 18px; border-radius: 6px; font-weight: bold; transition: background 0.3s; }
+        /* コンテンツエリア */
+        header { background-color: #003366; color: white; text-align: center; padding: 25px 10px; box-shadow: 0 2px 10px rgba(0,0,0,0.2); }
+        .hero { background-color: #f0f7ff; border-left: 6px solid #003366; margin: 20px 0; padding: 15px 20px; border-radius: 6px; }
+        .container { max-width: 650px; margin: 30px auto 120px auto; background: rgba(255, 255, 255, 0.95); padding: 25px 30px; border-radius: 12px; box-shadow: 0 8px 20px rgba(0,0,0,0.15); }
+        h1 { margin: 0; font-size: 2.2em; }
+        h2 { border-bottom: 2px solid #d9534f; padding-bottom: 8px; color: #003366; }
+        .form-group { margin-bottom: 15px; }
+        label { display: block; margin-bottom: 5px; font-weight: bold; }
+        input[type="text"], textarea { width: 100%; padding: 12px; box-sizing: border-box; border: 1px solid #ccc; border-radius: 6px; font-size: 16px; }
+        button { background-color: #d9534f; color: white; padding: 14px 20px; border: none; cursor: pointer; width: 100%; font-size: 18px; border-radius: 6px; font-weight: bold; }
         button:hover { background-color: #c9302c; }
 
         /* 右下の連絡先固定エリア */
         .contact-fixed {
             position: fixed;
             bottom: 20px; right: 20px;
-            background-color: rgba(255, 255, 255, 0.98);
-            padding: 15px 20px;
+            background-color: white;
+            padding: 15px;
             border-radius: 10px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
-            border: 1px solid #ddd;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.25);
+            border: 2px solid #003366;
             z-index: 100;
-            width: 250px;
+            width: 240px;
         }
-        .contact-fixed h4 { margin: 0 0 10px 0; color: #003366; }
-        .contact-fixed p { margin: 5px 0; font-size: 14px; color: #555; }
-        .contact-fixed a { color: #d9534f; text-decoration: none; font-weight: bold; }
+        .contact-fixed h4 { margin: 0 0 8px 0; color: #003366; font-size: 16px; border-bottom: 1px solid #eee; padding-bottom: 5px; }
+        .contact-fixed p { margin: 4px 0; font-size: 13px; color: #333; }
     </style>
 </head>
 <body>
 
-<!-- 背景レイヤー -->
+<!-- 背景（左：日本モチーフ / 右：モンゴルモチーフ） -->
 <div class="background-container">
-    <div class="bg-japan"></div>
-    <div class="bg-mongolia"></div>
+    <div class="bg-japan">🗾 🌸</div>
+    <div class="bg-mongolia">🇲🇳 🐎</div>
 </div>
 
-<!-- 中央の物流イラスト -->
-<div class="logistics-center"></div>
+<!-- 中央の物流ビジュアル -->
+<div class="logistics-center">
+    ✈️ 🚢 📦 🚚
+</div>
 
 <header>
     <h1>Japan Express</h1>
-    <p>Японоос бараа захиалга, контейнер тээвэр (日本からの商品注文・コンテナ輸送)</p>
+    <p>Японоос бараа захиалга, контейнер тээвэр</p>
 </header>
 
 <div class="container">
     <div class="hero">
         <h3>📢 Дараагийн контейнер ачилт: 2026/10/01</h3>
-        <p>次回コンテナ集荷予定：2026年10月01日（集荷完了次第、ウランバートルへ発送します）</p>
+        <p>次回コンテナ集荷予定：2026年10月01日（集荷完了次第発送）</p>
     </div>
 
     <h2>Захиалга өгөх (注文・見積もりフォーム)</h2>
-    <!-- 注文受け取り用のフォームエリア -->
-    <form action="https://formspree.io/f/mljelvyw_HERE" method="POST">
+    <form action="https://formspree.io/f/YOUR_FORM_ID_HERE" method="POST">
         <div class="form-group">
             <label>Нэр (お名前):</label>
             <input type="text" name="name" required placeholder="Gantulga">
@@ -98,19 +99,19 @@
             <input type="text" name="contact" required placeholder="9911xxxx / FB Name">
         </div>
         <div class="form-group">
-            <label>Захиалах барааны URL эсвэл нэр (希望商品のURLまたは商品名):</label>
-            <textarea name="product_details" rows="5" placeholder="https://amazon.co.jp/... または 商品名や数量をご記入ください" required></textarea>
+            <label>Захиалах барааны URL эсвэл нэр (希望商品):</label>
+            <textarea name="product_details" rows="4" placeholder="https://amazon.co.jp/... または 商品名" required></textarea>
         </div>
-        <button type="submit">Захиалга илгээх (注文・見積もりを送信する)</button>
+        <button type="submit">Захиалга илгээх (送信する)</button>
     </form>
 </div>
 
-<!-- 右下の連絡先固定エリア -->
+<!-- 右下の連絡先エリア -->
 <div class="contact-fixed">
     <h4>Бидэнтэй холбогдох (080-6348-8744)</h4>
-    <p>💰 GOLOMT BANK: 3055122225 </p>
-    <p>👤 Facebook: <a href="#" target="_blank">https://www.facebook.com/people/LBORU-Oil-%D0%A5%D2%AF%D0%BD%D0%B4-%D0%B4%D0%B0%D0%B0%D1%86%D0%B8%D0%B9%D0%BD-%D0%90%D0%B2%D1%82%D0%BE%D0%BC%D0%B0%D1%88%D0%B8%D0%BD%D1%8B-%D0%A2%D0%BE%D1%81-%D1%82%D0%BE%D1%81%D0%BE%D0%BB%D0%B3%D0%BE%D0%BE-%D0%A1%D1%8D%D0%BB%D0%B1%D1%8D%D0%B3-%D0%A5%D1%83%D0%B4%D0%B0%D0%BB%D0%B4%D0%B0%D0%B0/100067678719555/</a></p>
-    <p>📞 Phone: 9011-115x / 9970-399x </p>
+    <p>💰 GOLOMT BANK: 3055122225</p>
+    <p>👤 Facebook: LBORU Oil Хүнд даацийн Автомашины Тос тосолгоо, Сэлбэг Худалдаа</p>
+    <p>📞 Phone: 9011-115x / 9970-399x</p>
 </div>
 
 </body>
