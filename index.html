@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="mn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Japan Express - モンゴル向け日本商品注文・配送代行</title>
+    <style>
+        body { font-family: sans-serif; margin: 0; padding: 0; background-color: #f4f4f4; color: #333; }
+        header { background-color: #003366; color: white; text-align: center; padding: 20px 10px; }
+        .hero { background-color: #e6f2ff; border-left: 5px solid #003366; margin: 20px; padding: 15px; }
+        .container { max-width: 800px; margin: auto; background: white; padding: 20px; border-radius: 8px; }
+        .form-group { margin-bottom: 15px; }
+        label { display: block; margin-bottom: 5px; font-weight: bold; }
+        input[type="text"], input[type="email"], textarea { width: 100%; padding: 10px; box-sizing: border-box; }
+        button { background-color: #d9534f; color: white; padding: 12px 20px; border: none; cursor: pointer; width: 100%; font-size: 16px; border-radius: 4px; }
+        button:hover { background-color: #c9302c; }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>Japan Express Order</h1>
+    <p>Японоос бараа захиалга, контейнер тээвэр (日本からの商品注文・コンテナ輸送)</p>
+</header>
+
+<div class="container">
+    <div class="hero">
+        <h3>📢 Дараагийн контейнер ачилт: 2026/10/01</h3>
+        <p>次回コンテナ集荷予定：2026年10月01日（集荷完了次第、ウランバートルへ発送します）</p>
+    </div>
+
+    <h2>Захиалга өгөх (注文・見積もりフォーム)</h2>
+    <!-- 注文受け取り用のフォームエリア -->
+    <form action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
+        <div class="form-group">
+            <label>Нэр (お名前):</label>
+            <input type="text" name="name" required>
+        </div>
+        <div class="form-group">
+            <label>Утасны дугаар / FB (電話番号 / Facebook):</label>
+            <input type="text" name="contact" required>
+        </div>
+        <div class="form-group">
+            <label>Барааны URL эсвэл нэр (希望商品のURLまたは商品名):</label>
+            <textarea name="product_details" rows="4" placeholder="https://amazon.co.jp/... または 商品名や数量をご記入ください" required></textarea>
+        </div>
+        <button type="submit">Захиалга илгээх (注文・見積もりを送信する)</button>
+    </form>
+</div>
+
+</body>
+</html>
