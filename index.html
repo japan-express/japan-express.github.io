@@ -7,75 +7,74 @@
     <style>
         body { margin: 0; padding: 0; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; min-height: 100vh; position: relative; }
         
-        /* 背景: 左日本（赤ピンク系統）、右モンゴル（青緑系統） */
+        /* 背景レイヤー（鮮やかな高品質写真） */
         .background-container {
             position: fixed;
             top: 0; left: 0; width: 100%; height: 100%;
-            z-index: -1;
+            z-index: -2;
             display: flex;
         }
         .bg-japan {
             flex: 1;
-            background: linear-gradient(135deg, #ffdde1 0%, #ee9ca7 100%);
-            display: flex; align-items: center; justify-content: center;
-            font-size: 80px; opacity: 0.15;
+            background-image: url('https://images.unsplash.com/photo-1503899036084-c55cdd92da26?auto=format&fit=crop&w=1000&q=80'); /* 東京の夜景 */
+            background-size: cover; background-position: center;
         }
         .bg-mongolia {
             flex: 1;
-            background: linear-gradient(135deg, #a8e063 0%, #56ab2f 100%);
-            display: flex; align-items: center; justify-content: center;
-            font-size: 80px; opacity: 0.15;
+            background-image: url('https://images.unsplash.com/photo-1533104868038-744ccac13c7d?auto=format&fit=crop&w=1000&q=80'); /* モンゴルの大自然 */
+            background-size: cover; background-position: center;
         }
 
-        /* 中央の物流ビジュアル */
+        /* 中央の物流イラスト */
         .logistics-center {
             position: fixed;
-            top: 40%; left: 50%; transform: translate(-50%, -50%);
-            font-size: 70px;
-            text-shadow: 0 5px 15px rgba(0,0,0,0.2);
-            z-index: -1; text-align: center; white-space: nowrap;
+            top: 50%; left: 50%; transform: translate(-50%, -50%);
+            width: 90%; max-width: 500px; height: 300px;
+            background-image: url('https://illustrations.popsy.co/amber/delivery-truck.svg');
+            background-size: contain; background-repeat: no-repeat; background-position: center;
+            z-index: -1; opacity: 0.85; filter: drop-shadow(0px 10px 15px rgba(0,0,0,0.3));
         }
 
-        /* コンテンツエリア */
-        header { background-color: #003366; color: white; text-align: center; padding: 25px 10px; box-shadow: 0 2px 10px rgba(0,0,0,0.2); }
-        .hero { background-color: #f0f7ff; border-left: 6px solid #003366; margin: 20px 0; padding: 15px 20px; border-radius: 6px; }
-        .container { max-width: 650px; margin: 30px auto 120px auto; background: rgba(255, 255, 255, 0.95); padding: 25px 30px; border-radius: 12px; box-shadow: 0 8px 20px rgba(0,0,0,0.15); }
-        h1 { margin: 0; font-size: 2.2em; }
+        /* メインコンテンツエリア */
+        header { background-color: rgba(0, 51, 102, 0.92); color: white; text-align: center; padding: 25px 10px; box-shadow: 0 4px 15px rgba(0,0,0,0.3); }
+        .hero { background-color: rgba(240, 247, 255, 0.95); border-left: 6px solid #003366; margin: 20px 0; padding: 15px 20px; border-radius: 6px; }
+        .container { max-width: 650px; margin: 30px auto 140px auto; background: rgba(255, 255, 255, 0.94); padding: 30px; border-radius: 12px; box-shadow: 0 10px 25px rgba(0,0,0,0.3); backdrop-filter: blur(5px); }
+        h1 { margin: 0; font-size: 2.2em; text-shadow: 1px 1px 2px rgba(0,0,0,0.5); }
         h2 { border-bottom: 2px solid #d9534f; padding-bottom: 8px; color: #003366; }
-        .form-group { margin-bottom: 15px; }
-        label { display: block; margin-bottom: 5px; font-weight: bold; }
+        .form-group { margin-bottom: 18px; }
+        label { display: block; margin-bottom: 6px; font-weight: bold; color: #333; }
         input[type="text"], textarea { width: 100%; padding: 12px; box-sizing: border-box; border: 1px solid #ccc; border-radius: 6px; font-size: 16px; }
-        button { background-color: #d9534f; color: white; padding: 14px 20px; border: none; cursor: pointer; width: 100%; font-size: 18px; border-radius: 6px; font-weight: bold; }
+        button { background-color: #d9534f; color: white; padding: 15px 20px; border: none; cursor: pointer; width: 100%; font-size: 18px; border-radius: 6px; font-weight: bold; box-shadow: 0 4px 10px rgba(217, 83, 79, 0.4); }
         button:hover { background-color: #c9302c; }
 
-        /* 右下の連絡先固定エリア */
+        /* 右下の連絡先エリア */
         .contact-fixed {
             position: fixed;
             bottom: 20px; right: 20px;
-            background-color: white;
-            padding: 15px;
-            border-radius: 10px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.25);
+            background-color: rgba(255, 255, 255, 0.98);
+            padding: 15px 18px;
+            border-radius: 12px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.3);
             border: 2px solid #003366;
             z-index: 100;
-            width: 240px;
+            width: 260px;
         }
-        .contact-fixed h4 { margin: 0 0 8px 0; color: #003366; font-size: 16px; border-bottom: 1px solid #eee; padding-bottom: 5px; }
-        .contact-fixed p { margin: 4px 0; font-size: 13px; color: #333; }
+        .contact-fixed h4 { margin: 0 0 8px 0; color: #003366; font-size: 15px; border-bottom: 1px solid #eee; padding-bottom: 5px; }
+        .contact-fixed p { margin: 6px 0; font-size: 13px; color: #333; line-height: 1.4; }
+        .contact-fixed a { color: #1877f2; font-weight: bold; text-decoration: underline; word-break: break-all; }
+        .contact-fixed a:hover { color: #0b51b3; }
     </style>
 </head>
 <body>
 
-<!-- 背景（左：日本モチーフ / 右：モンゴルモチーフ） -->
+<!-- 背景（左：日本風景 / 右：モンゴル風景） -->
 <div class="background-container">
-    <div class="bg-japan">🗾 🌸</div>
-    <div class="bg-mongolia">🇲🇳 🐎</div>
+    <div class="bg-japan"></div>
+    <div class="bg-mongolia"></div>
 </div>
 
-<!-- 中央の物流ビジュアル -->
-<div class="logistics-center">
-    ✈️ 🚢 📦 🚚
-</div>
+<!-- 中央の物流イラスト -->
+<div class="logistics-center"></div>
 
 <header>
     <h1>Japan Express</h1>
@@ -89,7 +88,8 @@
     </div>
 
     <h2>Захиалга өгөх (注文・見積もりフォーム)</h2>
-    <form action="https://formspree.io/f/YOUR_FORM_ID_HERE" method="POST">
+    <!-- フォーム送信先（Formspree ID: mljelvyw 反映済み） -->
+    <form action="https://formspree.io/f/mljelvyw" method="POST">
         <div class="form-group">
             <label>Нэр (お名前):</label>
             <input type="text" name="name" required placeholder="Gantulga">
@@ -110,7 +110,7 @@
 <div class="contact-fixed">
     <h4>Бидэнтэй холбогдох (080-6348-8744)</h4>
     <p>💰 GOLOMT BANK: 3055122225</p>
-    <p>👤 Facebook: LBORU Oil Хүнд даацийн Автомашины Тос тосолгоо, Сэлбэг Худалдаа</p>
+    <p>👤 Facebook: <br><a href="https://www.facebook.com/" target="_blank">LBORU Oil Хүнд даацийн Автомашины Тос тосолгоо, Сэлбэг Худалдаа</a></p>
     <p>📞 Phone: 9011-115x / 9970-399x</p>
 </div>
 
