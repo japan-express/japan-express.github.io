@@ -3,23 +3,80 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Japan Express - モンゴル向け日本商品注文・配送代行</title>
+    <title>Japan Express - Японоос бараа захиалга, контейнер тээвэр</title>
     <style>
-        body { font-family: sans-serif; margin: 0; padding: 0; background-color: #f4f4f4; color: #333; }
-        header { background-color: #003366; color: white; text-align: center; padding: 20px 10px; }
-        .hero { background-color: #e6f2ff; border-left: 5px solid #003366; margin: 20px; padding: 15px; }
-        .container { max-width: 800px; margin: auto; background: white; padding: 20px; border-radius: 8px; }
-        .form-group { margin-bottom: 15px; }
-        label { display: block; margin-bottom: 5px; font-weight: bold; }
-        input[type="text"], input[type="email"], textarea { width: 100%; padding: 10px; box-sizing: border-box; }
-        button { background-color: #d9534f; color: white; padding: 12px 20px; border: none; cursor: pointer; width: 100%; font-size: 16px; border-radius: 4px; }
+        body { margin: 0; padding: 0; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; min-height: 100vh; }
+        
+        /* 背景設定: 左日本、右モンゴル */
+        .background-container {
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            z-index: -1;
+            display: flex;
+        }
+        .bg-japan {
+            flex: 1;
+            background-image: url('https://images.unsplash.com/photo-1540959733332-e94e270b2602?q=80&w=1600&auto=format&fit=crop'); /* 富士山と桜 */
+            background-size: cover; background-position: center;
+        }
+        .bg-mongolia {
+            flex: 1;
+            background-image: url('https://images.unsplash.com/photo-1533104868038-744ccac13c7d?q=80&w=1600&auto=format&fit=crop'); /* モンゴル草原とゲル */
+            background-size: cover; background-position: center;
+        }
+
+        /* 中央の物流イラストエリア */
+        .logistics-center {
+            position: fixed;
+            top: 50%; left: 50%; transform: translate(-50%, -50%);
+            width: 80%; max-width: 600px; height: 300px;
+            background-image: url('https://cdn.pixabay.com/photo/2021/01/18/14/05/cargo-ship-5928189_1280.png'); /* 物流・コンテナ・飛行機のイラスト */
+            background-size: contain; background-repeat: no-repeat; background-position: center;
+            opacity: 0.3; z-index: -1;
+        }
+
+        /* メインコンテンツ */
+        header { background-color: rgba(0, 51, 102, 0.9); color: white; text-align: center; padding: 30px 10px; }
+        .hero { background-color: rgba(230, 242, 255, 0.95); border-left: 5px solid #003366; margin: 20px; padding: 20px; border-radius: 8px; }
+        .container { max-width: 700px; margin: auto; background: rgba(255, 255, 255, 0.95); padding: 30px; border-radius: 10px; margin-bottom: 100px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); }
+        h1 { margin: 0; font-size: 2.5em; }
+        h2 { border-bottom: 2px solid #d9534f; padding-bottom: 10px; color: #003366; }
+        .form-group { margin-bottom: 18px; }
+        label { display: block; margin-bottom: 7px; font-weight: bold; }
+        input[type="text"], input[type="email"], textarea { width: 100%; padding: 12px; box-sizing: border-box; border: 1px solid #ccc; border-radius: 6px; font-size: 16px; }
+        button { background-color: #d9534f; color: white; padding: 15px 25px; border: none; cursor: pointer; width: 100%; font-size: 18px; border-radius: 6px; font-weight: bold; transition: background 0.3s; }
         button:hover { background-color: #c9302c; }
+
+        /* 右下の連絡先固定エリア */
+        .contact-fixed {
+            position: fixed;
+            bottom: 20px; right: 20px;
+            background-color: rgba(255, 255, 255, 0.98);
+            padding: 15px 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+            border: 1px solid #ddd;
+            z-index: 100;
+            width: 250px;
+        }
+        .contact-fixed h4 { margin: 0 0 10px 0; color: #003366; }
+        .contact-fixed p { margin: 5px 0; font-size: 14px; color: #555; }
+        .contact-fixed a { color: #d9534f; text-decoration: none; font-weight: bold; }
     </style>
 </head>
 <body>
 
+<!-- 背景レイヤー -->
+<div class="background-container">
+    <div class="bg-japan"></div>
+    <div class="bg-mongolia"></div>
+</div>
+
+<!-- 中央の物流イラスト -->
+<div class="logistics-center"></div>
+
 <header>
-    <h1>Japan Express Order</h1>
+    <h1>Japan Express</h1>
     <p>Японоос бараа захиалга, контейнер тээвэр (日本からの商品注文・コンテナ輸送)</p>
 </header>
 
@@ -31,21 +88,29 @@
 
     <h2>Захиалга өгөх (注文・見積もりフォーム)</h2>
     <!-- 注文受け取り用のフォームエリア -->
-    <form action="https://formspree.io/f/mljelvyw" method="POST">
+    <form action="https://formspree.io/f/mljelvyw_HERE" method="POST">
         <div class="form-group">
             <label>Нэр (お名前):</label>
-            <input type="text" name="name" required>
+            <input type="text" name="name" required placeholder="Gantulga">
         </div>
         <div class="form-group">
-            <label>Утасны дугаар / FB (電話番号 / Facebook):</label>
-            <input type="text" name="contact" required>
+            <label>Утасны дугаар / Facebook (連絡先):</label>
+            <input type="text" name="contact" required placeholder="9911xxxx / FB Name">
         </div>
         <div class="form-group">
-            <label>Барааны URL эсвэл нэр (希望商品のURLまたは商品名):</label>
-            <textarea name="product_details" rows="4" placeholder="https://amazon.co.jp/... または 商品名や数量をご記入ください" required></textarea>
+            <label>Захиалах барааны URL эсвэл нэр (希望商品のURLまたは商品名):</label>
+            <textarea name="product_details" rows="5" placeholder="https://amazon.co.jp/... または 商品名や数量をご記入ください" required></textarea>
         </div>
         <button type="submit">Захиалга илгээх (注文・見積もりを送信する)</button>
     </form>
+</div>
+
+<!-- 右下の連絡先固定エリア -->
+<div class="contact-fixed">
+    <h4>Бидэнтэй холбогдох (連絡先)</h4>
+    <p>💰 Khan Bank: xxxx-xxxx-xxxx</p>
+    <p>👤 Facebook: <a href="#" target="_blank">JapanExpress MN</a></p>
+    <p>📞 Phone: 88xx-xxxx / 99xx-xxxx</p>
 </div>
 
 </body>
